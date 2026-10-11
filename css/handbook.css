@@ -1,0 +1,202 @@
+:root {
+  --bg: #0f1419;
+  --card: #1a2332;
+  --text: #f0f4f8;
+  --muted: #94a3b8;
+  --accent: #22d3ee;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --font: "Nunito", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100dvh;
+}
+
+.wrap {
+  width: min(720px, 92%);
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+header.handbook-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.handbook-header h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 0.5rem;
+}
+
+.handbook-header p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.flow-step {
+  background: var(--card);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flow-arrow {
+  color: var(--muted);
+  align-self: center;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.card ol,
+.card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.card li {
+  margin-bottom: 0.4rem;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.checklist input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.25rem;
+  accent-color: var(--ok);
+  flex-shrink: 0;
+}
+
+code,
+.url-box {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  color: var(--ok);
+}
+
+.url-box {
+  display: block;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  word-break: break-all;
+}
+
+.tip {
+  font-size: 0.95rem;
+  color: var(--muted);
+  border-left: 3px solid var(--warn);
+  padding-left: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.settings-mock {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: #111;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.settings-mock .highlight {
+  color: var(--accent);
+}
+
+footer.handbook-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .checklist input {
+    border: 1px solid #333;
+  }
+}

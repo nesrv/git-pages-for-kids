@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Справочник: как сделать GitHub Pages</title>
+  <meta name="description" content="Пошаговый справочник для детей: опубликовать HTML-сайт на GitHub Pages">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/handbook.css">
+</head>
+<body>
+  <div class="wrap">
+    <a class="back-link" href="index.html">← Урок 1 про Git</a>
+
+    <header class="handbook-header">
+      <h1>Справочник: GitHub Pages</h1>
+      <p>Держи эту страницу открытой, пока настраиваешь свой первый сайт</p>
+    </header>
+
+    <div class="flow" aria-label="Схема шагов">
+      <span class="flow-step">Репозиторий</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">index.html</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Settings → Pages</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Ссылка готова</span>
+    </div>
+
+    <section class="card">
+      <h2><span class="step-num">1</span> Создай репозиторий</h2>
+      <ol>
+        <li>Зайди на <a href="https://github.com" rel="noopener">github.com</a> и войди в аккаунт.</li>
+        <li><strong>+</strong> → <strong>New repository</strong>.</li>
+        <li>Имя латиницей, например <code>my-first-site</code>.</li>
+        <li><strong>Create repository</strong>.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">2</span> Добавь главную страницу</h2>
+      <p>Файл должен называться <strong>index.html</strong> и лежать в <strong>корне</strong> репозитория.</p>
+      <ol>
+        <li><strong>Add file</strong> → <strong>Create new file</strong>.</li>
+        <li>В поле имени напиши: <code>index.html</code>.</li>
+        <li>Вставь свой HTML и нажми <strong>Commit changes</strong>.</li>
+      </ol>
+      <p class="tip">Без <code>index.html</code> GitHub не знает, что показать на главной.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">3</span> Включи GitHub Pages</h2>
+      <ol>
+        <li>В репозитории открой <strong>Settings</strong>.</li>
+        <li>Слева: <strong>Pages</strong>.</li>
+        <li><strong>Source:</strong> Deploy from a branch.</li>
+        <li><strong>Branch:</strong> <code>main</code> и папка <code>/ (root)</code>.</li>
+        <li><strong>Save</strong>.</li>
+      </ol>
+      <div class="settings-mock" aria-hidden="true">
+        Build and deployment<br>
+        Source: Deploy from a branch<br>
+        Branch: <span class="highlight">main</span> / <span class="highlight">/ (root)</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">4</span> Узнай адрес сайта</h2>
+      <p>Собери ссылку по шаблону:</p>
+      <span class="url-box">https://ТВОЙ-НИК.github.io/ИМЯ-РЕПОЗИТОРИЯ/</span>
+      <p>Пример:</p>
+      <span class="url-box">https://nesrv.github.io/git-pages-for-kids/</span>
+      <p class="tip">Готовая ссылка также появится на странице Settings → Pages через несколько минут.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">5</span> Обновляй сайт</h2>
+      <ul>
+        <li>Меняешь файлы → новый commit (или Upload) → подожди 1–2 минуты.</li>
+        <li>Обнови страницу в браузере (<kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Чеклист «Я всё сделал»</h2>
+      <ul class="checklist">
+        <li>
+          <input type="checkbox" id="c1">
+          <label for="c1">Есть репозиторий на GitHub</label>
+        </li>
+        <li>
+          <input type="checkbox" id="c2">
+          <label for="c2">В корне лежит <code>index.html</code></label>
+        </li>
+        <li>
+          <input type="checkbox" id="c3">
+          <label for="c3">В Settings → Pages выбраны <code>main</code> и <code>/ (root)</code></label>
+        </li>
+        <li>
+          <input type="checkbox" id="c4">
+          <label for="c4">Сайт открывается по ссылке <code>ник.github.io/репозиторий</code></label>
+        </li>
+        <li>
+          <input type="checkbox" id="c5">
+          <label for="c5">Я записал свою ссылку, чтобы показать друзьям</label>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Если не работает</h2>
+      <ul>
+        <li><strong>404</strong> — подожди 10 минут; проверь, что Pages включён.</li>
+        <li><strong>Не тот текст</strong> — открой именно тот репозиторий, где лежит твой <code>index.html</code>.</li>
+        <li><strong>Нет стилей</strong> — загрузи папку <code>css</code> и проверь путь в <code>&lt;link href="css/..."&gt;</code>.</li>
+      </ul>
+    </section>
+
+    <footer class="handbook-footer">
+      Урок 3 · Справочник GitHub Pages для детей · Можно распечатать (Ctrl+P)
+    </footer>
+  </div>
+</body>
+</html>
