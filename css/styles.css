@@ -120,6 +120,13 @@ body {
   gap: 0.75rem;
 }
 
+.header-handbooks {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .header-link {
   font-size: 0.8rem;
   font-weight: 700;

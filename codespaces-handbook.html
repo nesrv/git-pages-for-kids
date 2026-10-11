@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 4 — GitHub Codespaces и FastAPI</title>
+  <meta name="description" content="Пошаговый справочник для детей: запустить FastAPI в GitHub Codespaces и открыть /docs">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/handbook.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="handbook-nav" aria-label="Навигация по урокам">
+      <a class="back-link" href="index.html">← Урок 1 (Git)</a>
+      <a class="back-link secondary" href="github-pages-handbook.html">Урок 3 (Pages)</a>
+    </nav>
+
+    <header class="handbook-header">
+      <h1>Урок 4: Codespaces + FastAPI</h1>
+      <p>Облачный редактор → терминал → сервер на порту 8000 → страница <code>/docs</code></p>
+    </header>
+
+    <div class="flow" aria-label="Схема шагов">
+      <span class="flow-step">Code</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Codespace</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">pip install</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">uvicorn</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step accent-pill">/docs</span>
+    </div>
+
+    <figure class="diagram-scene card diagram-card" aria-label="Схема: браузер, Codespace и docs">
+      <div class="scene-row">
+        <div class="scene-box browser">
+          <span class="scene-label">Браузер</span>
+          <div class="browser-bar"></div>
+          <div class="browser-url">…-8000.app.github.dev<strong>/docs</strong></div>
+        </div>
+        <div class="scene-arrow anim-pulse" aria-hidden="true">⇄</div>
+        <div class="scene-box codespace">
+          <span class="scene-label">Codespace</span>
+          <div class="mini-terminal">
+            <span class="t-prompt">$</span> uvicorn main:app …
+          </div>
+          <span class="port-badge">порт 8000</span>
+        </div>
+      </div>
+    </figure>
+
+    <section class="card">
+      <h2><span class="step-num">0</span> Что такое Codespaces?</h2>
+      <p><strong>GitHub Codespaces</strong> — VS Code в браузере и Linux-компьютер на серверах GitHub. Python можно не ставить дома: всё в облаке.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">1</span> Открой Codespace</h2>
+      <ol>
+        <li>Репозиторий на GitHub, например <a href="https://github.com/nesrv/git-pages-for-kids" rel="noopener">git-pages-for-kids</a>.</li>
+        <li>Зелёная кнопка <strong>Code</strong> → вкладка <strong>Codespaces</strong>.</li>
+        <li><strong>Create codespace on main</strong> — подожди 1–3 минуты.</li>
+      </ol>
+      <p class="tip">Нет Codespaces? Попроси взрослого про лимиты аккаунта или повтори шаги локально с Python.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">2</span> Папка с примером</h2>
+      <p>В проекте уже есть:</p>
+      <pre class="terminal" aria-label="Структура папки">codespaces-fastapi/
+  main.py
+  requirements.txt</pre>
+      <p>Код сервера можно посмотреть в репозитории на GitHub в папке <code>codespaces-fastapi/</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">3</span> Установи библиотеки</h2>
+      <p><strong>Terminal → New Terminal</strong>, затем:</p>
+      <pre class="terminal copy-block">cd codespaces-fastapi
+python3 -m pip install -r requirements.txt</pre>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">4</span> Запусти сервер</h2>
+      <pre class="terminal copy-block">uvicorn main:app --reload --host 0.0.0.0 --port 8000</pre>
+      <table class="flag-table">
+        <thead>
+          <tr><th>Флаг</th><th>Зачем</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>main:app</code></td><td>файл <code>main.py</code>, объект <code>app</code></td></tr>
+          <tr><td><code>--reload</code></td><td>перезапуск при сохранении файла</td></tr>
+          <tr><td><code>--host 0.0.0.0</code></td><td>доступ из браузера Codespaces</td></tr>
+          <tr><td><code>--port 8000</code></td><td>номер порта</td></tr>
+        </tbody>
+      </table>
+      <p class="tip">Терминал с uvicorn не закрывай — пока он работает, сервер живой.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">5</span> Открой <code>/docs</code></h2>
+      <ol>
+        <li>Появится <strong>Open in Browser</strong> для порта 8000 — нажми.</li>
+        <li>Или вкладка <strong>Ports</strong> → 8000 → открыть в браузере.</li>
+        <li>В адресе добавь <strong>/docs</strong> в конец.</li>
+      </ol>
+      <div class="docs-mock" aria-hidden="true">
+        <div class="docs-title">Swagger UI — FastAPI</div>
+        <div class="docs-endpoint">
+          <span class="method get">GET</span> /hello
+          <button type="button" class="try-btn" disabled>Try it out</button>
+        </div>
+        <div class="docs-endpoint">
+          <span class="method get">GET</span> /
+        </div>
+      </div>
+      <p>Нажми <strong>Try it out</strong> → <strong>Execute</strong> — увидишь ответ сервера в JSON.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">6</span> Задание</h2>
+      <ol>
+        <li>Измени текст в <code>main.py</code> (например, своё имя).</li>
+        <li>Сохрани (<kbd>Ctrl</kbd>+<kbd>S</kbd>).</li>
+        <li>Снова вызови API в <code>/docs</code>.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Чеклист</h2>
+      <ul class="checklist">
+        <li>
+          <input type="checkbox" id="cs1">
+          <label for="cs1">Открыл Codespace из репозитория</label>
+        </li>
+        <li>
+          <input type="checkbox" id="cs2">
+          <label for="cs2">Выполнил <code>pip install -r requirements.txt</code></label>
+        </li>
+        <li>
+          <input type="checkbox" id="cs3">
+          <label for="cs3">Запустил uvicorn на порту 8000</label>
+        </li>
+        <li>
+          <input type="checkbox" id="cs4">
+          <label for="cs4">Открыл сайт и зашёл на <code>/docs</code></label>
+        </li>
+        <li>
+          <input type="checkbox" id="cs5">
+          <label for="cs5">Нажал Try it out и увидел ответ</label>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Если не работает</h2>
+      <ul>
+        <li><strong>uvicorn не найден</strong> — снова установи зависимости из <code>codespaces-fastapi</code>.</li>
+        <li><strong>Страница не открывается</strong> — uvicorn запущен? Порт 8000 открыт во вкладке Ports?</li>
+        <li><strong>Нет /docs</strong> — проверь, что в конце URL именно <code>/docs</code>.</li>
+      </ul>
+    </section>
+
+    <footer class="handbook-footer">
+      Урок 4 · <a href="https://github.com/nesrv/git-pages-for-kids/blob/main/lesson-4-github-codespaces.md">текст урока (Markdown)</a> · Можно распечатать (Ctrl+P)
+    </footer>
+  </div>
+</body>
+</html>
