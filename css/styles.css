@@ -114,6 +114,37 @@ body {
   color: var(--muted);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(26, 35, 50, 0.8);
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.header-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .header-link {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
 .slide-nav {
   display: flex;
   gap: 0.5rem;
