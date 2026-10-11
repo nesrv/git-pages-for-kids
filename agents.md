@@ -16,5 +16,7 @@ lesson-4-github-GitHub Codespaces.md
 дети должны поднять простой сервер fastAPI, запустить его и увидеть  docs
 
 
-lesson-5-github-GitHub Codespaces-html
-создай урок как связать fast
+lesson-5-github-GitHub Codespaces-html.md
+создай урок как связать fastapi на Codespace и простую html страницу
+
+создай для этого урока html и добавь в гит pages

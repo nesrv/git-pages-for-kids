@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Демо: HTML + FastAPI</title>
+  <meta name="description" content="Урок 5: страница на GitHub Pages запрашивает FastAPI в Codespace">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/handbook.css">
+  <link rel="stylesheet" href="css/fastapi-html-demo.css">
+</head>
+<body>
+  <div class="wrap demo-wrap">
+    <nav class="handbook-nav" aria-label="Навигация">
+      <a class="back-link" href="index.html">← Урок 1</a>
+      <a class="back-link secondary" href="fastapi-html-handbook.html">Справочник урока 5</a>
+    </nav>
+
+    <header class="handbook-header">
+      <h1>HTML ↔ FastAPI</h1>
+      <p>Страница на GitHub Pages · сервер в Codespace</p>
+    </header>
+
+    <div class="bridge-diagram" aria-hidden="true">
+      <div class="bridge-node pages">GitHub Pages<br><small>эта страница</small></div>
+      <div class="bridge-line"><span class="bridge-packet"></span></div>
+      <div class="bridge-node api">Codespace<br><small>FastAPI :8000</small></div>
+    </div>
+
+    <section class="card demo-card">
+      <label class="demo-label" for="api-url">URL твоего API (порт 8000, без /docs)</label>
+      <input class="demo-input" id="api-url" type="url" placeholder="https://xxxx-8000.app.github.dev" autocomplete="off">
+
+      <label class="demo-label" for="name">Имя для /hello</label>
+      <input class="demo-input" id="name" type="text" value="друг" maxlength="40">
+
+      <button type="button" class="demo-btn" id="ask-btn">Спросить сервер</button>
+
+      <output class="demo-result" id="result" for="ask-btn">Нажми кнопку — ответ появится здесь.</output>
+      <p class="tip">Сначала запусти в Codespace: <code>uvicorn main:app --reload --host 0.0.0.0 --port 8000</code></p>
+    </section>
+  </div>
+
+  <script src="js/fastapi-html-demo.js"></script>
+</body>
+</html>

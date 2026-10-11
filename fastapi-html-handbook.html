@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 5 — HTML и FastAPI</title>
+  <meta name="description" content="Связать GitHub Pages и FastAPI в Codespace: fetch и CORS">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/handbook.css">
+  <link rel="stylesheet" href="css/fastapi-html-demo.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="handbook-nav" aria-label="Навигация по урокам">
+      <a class="back-link" href="index.html">← Урок 1 (Git)</a>
+      <a class="back-link secondary" href="codespaces-handbook.html">Урок 4 (API)</a>
+      <a class="back-link secondary" href="fastapi-html-demo.html">Демо →</a>
+    </nav>
+
+    <header class="handbook-header">
+      <h1>Урок 5: HTML + FastAPI</h1>
+      <p>Страница на Pages спрашивает сервер в Codespace через <code>fetch</code></p>
+    </header>
+
+    <div class="flow" aria-label="Схема">
+      <span class="flow-step">Pages (HTML)</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">fetch</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step accent-pill">FastAPI</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">JSON</span>
+    </div>
+
+    <div class="bridge-diagram" aria-hidden="true">
+      <div class="bridge-node pages">GitHub Pages</div>
+      <div class="bridge-line"><span class="bridge-packet"></span></div>
+      <div class="bridge-node api">Codespace :8000</div>
+    </div>
+
+    <section class="card">
+      <h2><span class="step-num">1</span> Запусти API (урок 4)</h2>
+      <pre class="terminal copy-block">cd codespaces-fastapi
+uvicorn main:app --reload --host 0.0.0.0 --port 8000</pre>
+      <p>Скопируй URL порта <strong>8000</strong> (без <code>/docs</code>).</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">2</span> CORS в main.py</h2>
+      <p>Браузер блокирует запросы с <code>github.io</code> на другой домен, если сервер не разрешил. В проекте уже есть:</p>
+      <pre class="terminal">from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)</pre>
+      <p class="tip">После правок сохрани файл — при <code>--reload</code> сервер обновится.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">3</span> Открой демо на Pages</h2>
+      <p>Перейди на практическую страницу:</p>
+      <p><a class="demo-link-btn" href="fastapi-html-demo.html">fastapi-html-demo.html</a></p>
+      <span class="url-box">https://nesrv.github.io/git-pages-for-kids/fastapi-html-demo.html</span>
+      <ol>
+        <li>Вставь URL API из Codespace.</li>
+        <li>Введи имя.</li>
+        <li><strong>Спросить сервер</strong>.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-num">4</span> Код fetch (идея)</h2>
+      <pre class="terminal">const url = `${base}/hello?name=${encodeURIComponent(name)}`;
+const response = await fetch(url);
+const data = await response.json();</pre>
+      <p>Endpoint <code>/hello</code> возвращает <code>{"hello": "…"}</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Чеклист</h2>
+      <ul class="checklist">
+        <li><input type="checkbox" id="l5-1"><label for="l5-1">uvicorn запущен, <code>/hello</code> работает в браузере</label></li>
+        <li><input type="checkbox" id="l5-2"><label for="l5-2">В main.py есть CORS</label></li>
+        <li><input type="checkbox" id="l5-3"><label for="l5-3">Демо на Pages показало ответ сервера</label></li>
+        <li><input type="checkbox" id="l5-4"><label for="l5-4">Понял: Pages = витрина, Codespace = сервер</label></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Если не работает</h2>
+      <ul>
+        <li><strong>CORS</strong> — смотри консоль (F12), проверь middleware.</li>
+        <li><strong>Failed to fetch</strong> — Codespace выключен или неверный URL.</li>
+        <li><strong>Старая страница</strong> — Ctrl+F5 после push на GitHub.</li>
+      </ul>
+    </section>
+
+    <footer class="handbook-footer">
+      Урок 5 ·
+      <a href="https://github.com/nesrv/git-pages-for-kids/blob/main/lesson-5-github-codespaces-html.md">Markdown</a>
+    </footer>
+  </div>
+</body>
+</html>
