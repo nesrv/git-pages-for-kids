@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 1 — Git для детей</title>
+  <meta name="description" content="Простой урок из 5 слайдов про Git для детей">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-git">git</span>
+      <span class="logo-kids">для детей</span>
+    </div>
+    <nav class="slide-nav" aria-label="Слайды">
+      <button type="button" class="nav-dot active" data-slide="0" aria-label="Слайд 1"></button>
+      <button type="button" class="nav-dot" data-slide="1" aria-label="Слайд 2"></button>
+      <button type="button" class="nav-dot" data-slide="2" aria-label="Слайд 3"></button>
+      <button type="button" class="nav-dot" data-slide="3" aria-label="Слайд 4"></button>
+      <button type="button" class="nav-dot" data-slide="4" aria-label="Слайд 5"></button>
+    </nav>
+  </header>
+
+  <main class="deck" id="deck">
+    <!-- Слайд 1 -->
+    <section class="slide slide-1" id="slide-1" data-slide="0">
+      <div class="slide-inner">
+        <div class="slide-text reveal">
+          <span class="slide-badge">Слайд 1</span>
+          <h1>Что такое Git?</h1>
+          <p><strong>Git</strong> — программа, которая <em>помнит все версии</em> твоих файлов: текстов, картинок, кода.</p>
+          <p>Представь <strong>альбом с наклейками</strong>: каждый раз, когда ты что-то нарисовал, ты клеишь новую наклейку с датой. Git делает то же с файлами на компьютере.</p>
+          <p class="highlight">Зачем: не бояться ошибок — всегда можно вернуться к старой «наклейке».</p>
+        </div>
+        <figure class="diagram diagram-album reveal" aria-label="Схема: альбом с наклейками версий">
+          <div class="album">
+            <div class="album-cover">Мой проект</div>
+            <div class="stickers">
+              <div class="sticker s1"><span>v1</span><small>понедельник</small></div>
+              <div class="sticker s2"><span>v2</span><small>вторник</small></div>
+              <div class="sticker s3"><span>v3</span><small>среда</small></div>
+              <div class="sticker s4 ghost"><span>v4</span><small>скоро!</small></div>
+            </div>
+          </div>
+          <div class="time-arrow">
+            <span class="arrow-line"></span>
+            <span class="arrow-label">время →</span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Слайд 2 -->
+    <section class="slide slide-2" id="slide-2" data-slide="1">
+      <div class="slide-inner">
+        <div class="slide-text reveal">
+          <span class="slide-badge">Слайд 2</span>
+          <h1>Репозиторий — дом для проекта</h1>
+          <p><strong>Репозиторий</strong> (repo) — папка проекта, за которой следит Git.</p>
+          <p>Туда кладут всё из одной работы: рассказ, игру, сайт.</p>
+          <code class="cmd">git init</code>
+          <p class="cmd-hint">«Git, этот проект — твой, запоминай изменения».</p>
+        </div>
+        <figure class="diagram diagram-repo reveal" aria-label="Схема: репозиторий как дом">
+          <div class="repo-house">
+            <div class="house-roof"></div>
+            <div class="house-body">
+              <span class="house-label">.git / repo</span>
+              <ul class="file-cloud">
+                <li class="file f1">📖 story.txt</li>
+                <li class="file f2">🎮 game.js</li>
+                <li class="file f3">🖼️ art.png</li>
+              </ul>
+            </div>
+            <div class="git-owl" title="Git следит">👀</div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Слайд 3 -->
+    <section class="slide slide-3" id="slide-3" data-slide="2">
+      <div class="slide-inner">
+        <div class="slide-text reveal">
+          <span class="slide-badge">Слайд 3</span>
+          <h1>Коммит — сохранённый снимок</h1>
+          <p><strong>Коммит</strong> — снимок проекта в момент времени, как <strong>чекпоинт в игре</strong>.</p>
+          <ol class="steps">
+            <li>Выбрать, что сохранить: <code>git add .</code></li>
+            <li>Подписать снимок: <code>git commit -m "…"</code></li>
+          </ol>
+          <p>Сообщение объясняет, <em>что изменилось</em> — как подпись под рисунком.</p>
+        </div>
+        <figure class="diagram diagram-commit reveal" aria-label="Схема: коммит как чекпоинт">
+          <div class="game-bar">
+            <div class="level">Уровень 3</div>
+            <div class="hp"><span class="hp-fill"></span></div>
+          </div>
+          <div class="checkpoint-path">
+            <div class="cp done">💾</div>
+            <div class="cp-line line-1"></div>
+            <div class="cp done">💾</div>
+            <div class="cp-line line-2"></div>
+            <div class="cp active pulse">⭐ commit</div>
+          </div>
+          <p class="commit-msg">«Добавил третью главу»</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Слайд 4 -->
+    <section class="slide slide-4" id="slide-4" data-slide="3">
+      <div class="slide-inner">
+        <div class="slide-text reveal">
+          <span class="slide-badge">Слайд 4</span>
+          <h1>Ветки — разные версии одной истории</h1>
+          <p><strong>Ветка</strong> — отдельная линия изменений. Главная часто называется <code>main</code>.</p>
+          <p>В <code>main</code> — готовая история, в <code>новый-конец</code> — пробуешь другой финал, не ломая основную.</p>
+          <code class="cmd block">git branch новый-конец<br>git checkout новый-конец</code>
+          <p class="cmd-hint">Понравилось — <strong>сливаешь</strong> ветки обратно в <code>main</code>.</p>
+        </div>
+        <figure class="diagram diagram-branches reveal" aria-label="Схема: ветки и слияние">
+          <svg class="branch-svg" viewBox="0 0 320 200" role="img">
+            <defs>
+              <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f97316"/>
+                <stop offset="100%" stop-color="#fb923c"/>
+              </linearGradient>
+              <linearGradient id="featGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8b5cf6"/>
+                <stop offset="100%" stop-color="#a78bfa"/>
+              </linearGradient>
+            </defs>
+            <path class="branch-path main-path" d="M 40 100 H 280" fill="none" stroke="url(#mainGrad)" stroke-width="8" stroke-linecap="round"/>
+            <path class="branch-path feat-path" d="M 120 100 Q 120 40 200 40 T 280 100" fill="none" stroke="url(#featGrad)" stroke-width="8" stroke-linecap="round"/>
+            <circle class="node n1" cx="40" cy="100" r="10"/>
+            <circle class="node n2" cx="120" cy="100" r="10"/>
+            <circle class="node n3" cx="200" cy="40" r="10"/>
+            <circle class="node n4" cx="280" cy="100" r="10"/>
+            <text x="40" y="130" class="branch-label">start</text>
+            <text x="95" y="130" class="branch-label">main</text>
+            <text x="175" y="28" class="branch-label feat">новый-конец</text>
+            <text x="250" y="130" class="branch-label">merge</text>
+          </svg>
+          <div class="merge-spark" aria-hidden="true">✨</div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Слайд 5 -->
+    <section class="slide slide-5" id="slide-5" data-slide="4">
+      <div class="slide-inner">
+        <div class="slide-text reveal">
+          <span class="slide-badge">Слайд 5</span>
+          <h1>Делимся и работаем вместе</h1>
+          <p>Git отправляет проект на сервер (GitHub) и забирает чужие изменения.</p>
+          <ul class="cmd-list">
+            <li><code>git push</code> — отправить коммиты в облако</li>
+            <li><code>git pull</code> — скачать изменения друзей</li>
+            <li><code>git clone</code> — скопировать проект к себе</li>
+          </ul>
+          <p class="highlight">Перед работой — <code>pull</code>, после готового куска — <code>commit</code> и <code>push</code>.</p>
+        </div>
+        <figure class="diagram diagram-sync reveal" aria-label="Схема: push и pull">
+          <div class="sync-scene">
+            <div class="device laptop">
+              <span class="device-screen">ты</span>
+              <div class="packets out">
+                <span class="packet p1">push</span>
+                <span class="packet p2">pull</span>
+              </div>
+            </div>
+            <div class="cloud-server">
+              <div class="cloud-shape"></div>
+              <span>GitHub</span>
+            </div>
+            <div class="device phone">
+              <span class="device-screen">друг</span>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="slide slide-outro" id="slide-outro">
+      <div class="slide-inner outro-inner reveal">
+        <h2>Итог</h2>
+        <p>Git — <strong>память проекта</strong>: репозиторий, коммиты, ветки и обмен с друзьями.</p>
+        <p class="outro-big">Ошибаться можно — старые версии не пропадают.</p>
+        <button type="button" class="btn-restart" id="restart">Начать сначала ↑</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <button type="button" class="btn-nav prev" id="prev" aria-label="Предыдущий слайд">←</button>
+    <span class="slide-counter"><span id="current">1</span> / 5</span>
+    <button type="button" class="btn-nav next" id="next" aria-label="Следующий слайд">→</button>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
